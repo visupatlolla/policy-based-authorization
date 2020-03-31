@@ -1,0 +1,43 @@
+[
+	{
+		"resource": [
+			"/comparable-service/**"
+		],
+		"action": [
+			"GET"
+		],
+		"condition": "#claims['userRoles'].contains('mf_comparables_app')",
+		"effect": "Allow"
+	},
+	{
+		"resource": [
+			"/resource/**"
+		],
+		"action": [
+			"GET"
+		],
+		"role": ["mf_comparables_app"],
+		"effect": "Allow"
+	},
+	{
+		"resource": [
+			"/resource/**"
+		],
+		"action": [
+			"GET"
+		],
+		"role": ["mf_user"],
+		"effect": "Deny"
+	},
+	{
+		"resource": [
+			"/**"
+		],
+		"action": [
+			"GET"
+		],
+		"effect": "Deny"
+	}
+	
+
+]

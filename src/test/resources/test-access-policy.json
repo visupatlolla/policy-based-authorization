@@ -1,0 +1,64 @@
+[
+	{
+		"resource": [
+			"/comparable-service/{testid}/**"
+		],
+		"action": [
+			"GET"
+		],
+		"condition": "#claims['userRoles'].contains('mf_comparables_app') and #testid == 'api'",
+		"effect": "Allow"
+	},	
+	{
+		"resource": [
+			"/comparable-service/**"
+		],
+		"action": [
+			"GET"
+		],
+		"condition": "#claims['userRoles'].contains('mf_comparables_app')",
+		"effect": "Allow"
+	},
+	{
+		"resource": [
+			"/resourceA/**"
+		],
+		"action": [
+			"GET"
+		],
+		"role": ["mf_comparables_app"],
+		"effect": "Allow"
+	},
+	{
+		"resource": [
+			"/resourceB/**"
+		],
+		"action": [
+			"GET"
+		],
+		"role": ["mf_user"],
+		"effect": "Deny"
+	},
+	{
+		"resource": [
+			"/resourceC/**"
+		],
+		"action": [
+			"GET"
+		],
+		"role": ["mf_comparables_app"],
+		"effect": "Allow"
+	},
+
+		{
+		"resource": [
+			"/resource/{businessAccount}/**"
+		],
+		"action": [
+			"POST"
+		],
+		"role": ["mf~Seller:Loan Submitter"],
+		"condition": "#claims['entitlements'].contains(#role[0]+':'+#businessAccount)",
+		"effect": "Allow"
+	}
+]
